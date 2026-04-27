@@ -291,10 +291,13 @@
 // When someone visits /insta they get redirected to the Insta URL below.
 // Both URLs MUST start with https:// (or http://)
 
-if (window.location.pathname === '/link') {
+// Strip any trailing slash so '/link/' and '/link' both match
+var path = window.location.pathname.replace(/\/$/, '');
+
+if (path === '/link') {
   window.location.replace('https://www.google.com'); // <-- Link button destination
 }
-if (window.location.pathname === '/insta') {
+if (path === '/insta') {
   window.location.replace('https://www.instagram.com'); // <-- Insta button destination
 }
 </script>
